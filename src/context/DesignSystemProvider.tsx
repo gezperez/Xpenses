@@ -1,18 +1,19 @@
 import { createContext, ReactNode, useState } from 'react';
-import { SystemContextType, Theme } from '~/types';
+import { DesignSystemContextType, Theme } from '~/types';
 import { darkTheme, lightTheme } from '~/utils';
 
-export const SystemProviderContext = createContext<SystemContextType>({
-  theme: lightTheme,
-  setAppTheme: () => {},
-  toggleAppTheme: () => {},
-});
+export const DesignSystemProviderContext =
+  createContext<DesignSystemContextType>({
+    theme: lightTheme,
+    setAppTheme: () => {},
+    toggleAppTheme: () => {},
+  });
 
-type SystemProviderProps = {
+type DesignSystemProviderProps = {
   children: ReactNode;
 };
 
-const SystemProvider = ({ children }: SystemProviderProps) => {
+const SystemProvider = ({ children }: DesignSystemProviderProps) => {
   const [theme, setTheme] = useState(lightTheme);
 
   const setAppTheme = (newTheme: Theme) => {
@@ -26,7 +27,7 @@ const SystemProvider = ({ children }: SystemProviderProps) => {
   };
 
   return (
-    <SystemProviderContext.Provider
+    <DesignSystemProviderContext.Provider
       value={{
         theme,
         setAppTheme,
@@ -34,7 +35,7 @@ const SystemProvider = ({ children }: SystemProviderProps) => {
       }}
     >
       {children}
-    </SystemProviderContext.Provider>
+    </DesignSystemProviderContext.Provider>
   );
 };
 

@@ -1,0 +1,41 @@
+export type Theme = {
+  background: string;
+  onBackground: string;
+  surfaceContainer: string;
+  surfaceDisabled: string;
+  surfaceOutline: string;
+  onSurfaceContrast: string;
+  onSurface: string;
+  white20: string;
+  black20: string;
+  primary: string;
+  onPrimary: string;
+  secondary: string;
+  onSecondary: string;
+  secondaryContrast: string;
+  onSecondaryContrast: string;
+  tertiary: string;
+  onTertiary: string;
+  tertiaryContrast: string;
+  onTertiaryContrast: string;
+  plan00: string;
+  onPlan00: string;
+  plan01: string;
+  onPlan01: string;
+  plan02: string;
+  onPlan02: string;
+  success: string;
+  onSuccess: string;
+  successContrast: string;
+  onSuccessContrast: string;
+  danger: string;
+  onDanger: string;
+  dangerContrast: string;
+  onDangerContrast: string;
+};
+
+export type DesignSystemContextType = {
+  theme: Theme;
+  setAppTheme: (newTheme: Theme) => void;
+  toggleAppTheme: () => void;
+};

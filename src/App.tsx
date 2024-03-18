@@ -1,14 +1,14 @@
 import React from 'react';
 import Navigator from './navigation/Navigator';
-import { AppProvider, SystemProvider } from './context';
+import { AppProvider, DesignSystemProvider } from './context';
 
 const App = () => {
   return (
-    <SystemProvider>
+    <DesignSystemProvider>
       <AppProvider>
         <Navigator />
       </AppProvider>
-    </SystemProvider>
+    </DesignSystemProvider>
   );
 };
 

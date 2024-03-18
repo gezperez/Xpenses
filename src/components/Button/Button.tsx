@@ -7,16 +7,19 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import { useSystemContext } from '~/hooks';
+import { ColorType, Size } from '~/enums';
+import { useDesignSystemContext } from '~/hooks';
 import { Color } from '~/utils';
-import styles from './styles';
+import { getDynamicStyles, styles } from './styles';
 
-type ButtonProps = {
+export type ButtonProps = {
   onPress: () => void;
   title: string;
   style?: StyleProp<ViewStyle>;
   isDisabled?: boolean;
   isLoading?: boolean;
+  colorType: ColorType;
+  size: Size;
 };
 
 const Button = ({
@@ -25,8 +28,17 @@ const Button = ({
   style,
   isDisabled,
   isLoading,
+  colorType = ColorType.PRIMARY,
+  size = Size.LARGE,
 }: ButtonProps) => {
-  const { theme } = useSystemContext();
+  const { theme } = useDesignSystemContext();
+
+  const dynamicStyles = getDynamicStyles({
+    theme,
+    colorType,
+    size,
+    isDisabled,
+  });
 
   if (isLoading) {
     return (
@@ -36,19 +48,22 @@ const Button = ({
     );
   }
 
+  const renderContent = () => {
+    if (isLoading) {
+      return <ActivityIndicator color={theme.onDanger} />;
+    }
+
+    return <Text style={dynamicStyles.font}>{title}</Text>;
+  };
+
   return (
     <SafeAreaView>
       <TouchableOpacity
         disabled={isDisabled}
         onPress={onPress}
-        style={[
-          styles.container,
-          isDisabled && styles.disabled,
-          style,
-          { backgroundColor: theme.danger },
-        ]}
+        style={[styles.container, dynamicStyles.container, style]}
       >
-        <Text style={styles.title}>{title}</Text>
+        {renderContent()}
       </TouchableOpacity>
     </SafeAreaView>
   );

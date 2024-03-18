@@ -1,2 +1,2 @@
 export { default as AppProvider } from './AppProvider';
-export { default as SystemProvider } from './SystemProvider';
+export { default as DesignSystemProvider } from './DesignSystemProvider';
