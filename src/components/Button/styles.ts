@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BorderRadius, ColorType, Size, Spacing } from '~/enums';
+import { BorderRadius, ColorType, Size, Spacing } from '~/constants';
 import { Theme } from '~/types';
 import { Color } from '~/utils';
 import { ButtonProps } from './Button';

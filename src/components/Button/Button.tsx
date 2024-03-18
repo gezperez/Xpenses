@@ -3,13 +3,12 @@ import {
   ActivityIndicator,
   SafeAreaView,
   StyleProp,
-  Text,
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import { ColorType, Size } from '~/enums';
+import { ColorType, Size, Typography } from '~/constants';
 import { useDesignSystemContext } from '~/hooks';
-import { Color } from '~/utils';
+import TextDS from '../TextDS';
 import { getDynamicStyles, styles } from './styles';
 
 export type ButtonProps = {
@@ -33,6 +32,11 @@ const Button = ({
 }: ButtonProps) => {
   const { theme } = useDesignSystemContext();
 
+  const fontType =
+    size === Size.LARGE
+      ? Typography.BODY_LARGE_BOLD
+      : Typography.BODY_DEFAULT_BOLD;
+
   const dynamicStyles = getDynamicStyles({
     theme,
     colorType,
@@ -40,20 +44,24 @@ const Button = ({
     isDisabled,
   });
 
-  if (isLoading) {
-    return (
-      <SafeAreaView>
-        <ActivityIndicator color={Color.PRIMARY} />
-      </SafeAreaView>
-    );
-  }
-
   const renderContent = () => {
     if (isLoading) {
-      return <ActivityIndicator color={theme.onDanger} />;
+      return (
+        <ActivityIndicator
+          size={'small'}
+          color={dynamicStyles.font.color}
+        />
+      );
     }
 
-    return <Text style={dynamicStyles.font}>{title}</Text>;
+    return (
+      <TextDS
+        type={fontType}
+        color={dynamicStyles.font.color}
+      >
+        {title}
+      </TextDS>
+    );
   };
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Button from '~/components/Button';
-import { ColorType, Size } from '~/enums';
+import { ColorType, Size } from '~/constants';
 import { useDesignSystemContext } from '~/hooks';
 import { HomeScreenProps } from '../../navigation/types';
 
