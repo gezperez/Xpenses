@@ -7,6 +7,7 @@ export const DesignSystemProviderContext =
     theme: lightTheme,
     setAppTheme: () => {},
     toggleAppTheme: () => {},
+    isDarkTheme: false,
   });
 
 type DesignSystemProviderProps = {
@@ -26,12 +27,15 @@ const SystemProvider = ({ children }: DesignSystemProviderProps) => {
     );
   };
 
+  const isDarkTheme = theme !== lightTheme;
+
   return (
     <DesignSystemProviderContext.Provider
       value={{
         theme,
         setAppTheme,
         toggleAppTheme,
+        isDarkTheme,
       }}
     >
       {children}

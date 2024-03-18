@@ -5,7 +5,7 @@ import styles from './styles';
 
 export type TypographyType = keyof typeof TypographyVariant;
 
-type TextDSProps = {
+export type TextDSProps = {
   color?: string;
   style?: StyleProp<ViewStyle>;
   upperCase?: boolean;

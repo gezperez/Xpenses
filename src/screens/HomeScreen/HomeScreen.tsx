@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { Container } from '~/components';
 import Button from '~/components/Button';
 import { ColorType, Size } from '~/constants';
 import { useDesignSystemContext } from '~/hooks';
@@ -11,15 +12,28 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
     toggleAppTheme();
   };
 
+  const renderContent = () => <View></View>;
+
   return (
-    <View>
-      <Button
-        title="Button"
-        onPress={handleButtonPress}
-        colorType={ColorType.SECONDARY}
-        size={Size.LARGE}
-      />
-    </View>
+    <Container
+      contentProps={{
+        renderContent: renderContent(),
+      }}
+      bottomBarProps={{
+        primaryButton: {
+          title: 'Primary',
+          onPress: () => {},
+          colorType: ColorType.PRIMARY,
+          size: Size.LARGE,
+        },
+        secondaryButton: {
+          title: 'Secondary',
+          onPress: () => {},
+          colorType: ColorType.PRIMARY,
+          size: Size.LARGE,
+        },
+      }}
+    ></Container>
   );
 };
 

@@ -38,4 +38,5 @@ export type DesignSystemContextType = {
   theme: Theme;
   setAppTheme: (newTheme: Theme) => void;
   toggleAppTheme: () => void;
+  isDarkTheme: boolean;
 };
