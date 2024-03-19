@@ -2,3 +2,8 @@ export { default as Button } from './Button';
 export { default as TextDS } from './TextDS';
 export { default as RefreshControlDS } from './RefreshControlDS';
 export { default as Container } from './Container';
+export { default as Tab } from './Tab';
+export { default as BottomBar } from './BottomBar';
+export { default as TopBar } from './TopBar';
+export { default as Spinner } from './Spinner';
+export { default as Icon } from './Icon';

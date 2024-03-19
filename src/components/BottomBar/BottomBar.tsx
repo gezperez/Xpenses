@@ -1,13 +1,14 @@
 import React, { ReactNode } from 'react';
 import { SafeAreaView, StyleProp, View, ViewStyle } from 'react-native';
-import { ColorType, Typography } from '~/constants';
+import { ButtonType, ColorType, Typography } from '~/constants';
 import { useDesignSystemContext, useKeyboard } from '~/hooks';
-import Button, { ButtonProps } from '../Button/Button';
+import Button from '../Button/Button';
+import { ButtonTextProps } from '../Button/types';
 import TextDS from '../TextDS';
 import { TextDSProps } from '../TextDS/TextDS';
 import styles from './styles';
 
-type TextButton = Omit<ButtonProps, 'type'>;
+type TextButton = Omit<ButtonTextProps, 'type'>;
 
 export type BottomBarProps = {
   primaryButton?: TextButton;
@@ -73,6 +74,7 @@ const BottomBar = ({
         >
           {primaryButton && (
             <Button
+              type={ButtonType.TEXT}
               {...primaryButton}
               style={[
                 isHorizontal ? styles.horizontalButton : styles.verticalButton,
@@ -81,6 +83,7 @@ const BottomBar = ({
           )}
           {secondaryButton && (
             <Button
+              type={ButtonType.TEXT}
               {...secondaryButton}
               colorType={ColorType.SECONDARY}
               style={[

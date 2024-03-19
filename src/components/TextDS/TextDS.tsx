@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, Text, TextProps, ViewStyle } from 'react-native';
+import { StyleProp, Text, TextProps, TextStyle } from 'react-native';
 import { Typography, TypographyVariant } from '~/constants';
 import styles from './styles';
 
@@ -7,7 +7,7 @@ export type TypographyType = keyof typeof TypographyVariant;
 
 export type TextDSProps = {
   color?: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
   upperCase?: boolean;
   type?: Typography;
   alignCenter?: boolean;
