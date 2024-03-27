@@ -7,3 +7,5 @@ export { default as BottomBar } from './BottomBar';
 export { default as TopBar } from './TopBar';
 export { default as Spinner } from './Spinner';
 export { default as Icon } from './Icon';
+export { default as TextView } from './TextView';
+export { default as InputDS } from './InputDS';

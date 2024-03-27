@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Camera } from 'lucide-react-native';
 import Button from '~/components/Button';
 import { ButtonType, TopBarLeftContentType } from '~/constants';
 import styles from './styles';
@@ -16,6 +15,7 @@ const TopBarLeftContent = ({ contentProps }: TopBarLeftProps) => {
       case TopBarLeftContentType.ICON:
         return (
           <Button
+            iconProps={contentProps?.iconProps}
             type={ButtonType.ICON}
             onPress={contentProps.onPress}
             style={styles.icon}

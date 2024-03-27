@@ -4,6 +4,8 @@ enum Typography {
   HEADLINE_H3 = 'headlineH3',
   HEADLINE_H4 = 'headlineH4',
   HEADLINE_H5 = 'headlineH5',
+  BODY_EXTRA_LARGE_BOLD = 'bodyExtraLargeBold',
+  BODY_EXTRA_LARGE_REGULAR = 'bodyExtraLargeRegular',
   BODY_LARGE_BOLD = 'bodyLargeBold',
   BODY_LARGE_REGULAR = 'bodyLargeRegular',
   BODY_DEFAULT_BOLD = 'bodyDefaultBold',

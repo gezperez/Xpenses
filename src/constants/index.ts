@@ -12,3 +12,5 @@ export { default as TopBarRightContentType } from './TopBarRightContentType';
 export { default as ButtonType } from './ButtonType';
 export { default as IconSize } from './IconSize';
 export { default as SpinnerSize } from './SpinnerSize';
+export { default as TextType } from './TextType';
+export { default as InputDSType } from './InputDSType';

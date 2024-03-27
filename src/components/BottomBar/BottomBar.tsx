@@ -3,12 +3,13 @@ import { SafeAreaView, StyleProp, View, ViewStyle } from 'react-native';
 import { ButtonType, ColorType, Typography } from '~/constants';
 import { useDesignSystemContext, useKeyboard } from '~/hooks';
 import Button from '../Button/Button';
-import { ButtonTextProps } from '../Button/types';
+import { ButtonFloatingProps, ButtonTextProps } from '../Button/types';
 import TextDS from '../TextDS';
 import { TextDSProps } from '../TextDS/TextDS';
 import styles from './styles';
 
 type TextButton = Omit<ButtonTextProps, 'type'>;
+type FloatingButton = Omit<ButtonFloatingProps, 'type'>;
 
 export type BottomBarProps = {
   primaryButton?: TextButton;
@@ -21,6 +22,7 @@ export type BottomBarProps = {
   isGameMode?: boolean;
   isHorizontal?: boolean;
   accessibilityLabel?: string;
+  floatingButton?: FloatingButton;
 };
 
 const BottomBar = ({
@@ -30,6 +32,7 @@ const BottomBar = ({
   style,
   isHorizontal,
   accessibilityLabel,
+  floatingButton,
 }: BottomBarProps) => {
   const { theme } = useDesignSystemContext();
 
@@ -93,6 +96,13 @@ const BottomBar = ({
             />
           )}
         </View>
+        {floatingButton && (
+          <Button
+            type={ButtonType.FLOATING}
+            {...floatingButton}
+            style={styles.floatingButton}
+          />
+        )}
       </View>
     </SafeAreaView>
   );

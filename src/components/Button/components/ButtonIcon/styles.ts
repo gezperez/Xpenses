@@ -1,47 +1,94 @@
 import { StyleSheet } from 'react-native';
 import { Theme } from '~/types';
-import { BorderRadius, IconSize } from '../../../../constants';
+import { BorderRadius, IconSize, Spacing } from '../../../../constants';
 import { ButtonIconProps } from '../../types';
 
 interface GetDynamicStylesProps {
   theme: Theme;
   isDisabled: ButtonIconProps['isDisabled'];
+  isSelected: ButtonIconProps['isSelected'];
   iconSize: IconSize;
 }
 
 type GetColorStylesProps = Omit<GetDynamicStylesProps, 'iconSize'>;
 
-const getColorStyles = ({ theme, isDisabled }: GetColorStylesProps) => {
+const getColorStyles = ({
+  theme,
+  isDisabled,
+  isSelected,
+}: GetColorStylesProps) => {
   const disabled = isDisabled ? 'disabled' : 'enabled';
+  const selected = isSelected ? 'selected' : 'unselected';
 
   const colors = {
-    disabled: {
-      container: {
-        backgroundColor: theme.surfaceContainer,
+    selected: {
+      disabled: {
+        container: {
+          backgroundColor: theme.surfaceDisabled,
+          borderColor: theme.onSurfaceContrast,
+        },
+        icon: {
+          color: theme.onSurfaceContrast,
+        },
+        font: {
+          color: theme.onSurfaceContrast,
+        },
       },
-      icon: {
-        color: theme.primary,
+      enabled: {
+        container: {
+          backgroundColor: theme.primary,
+          borderColor: theme.primary,
+        },
+        icon: {
+          color: theme.onPrimary,
+        },
+        font: {
+          color: theme.primary,
+        },
       },
     },
-    enabled: {
-      container: {
-        backgroundColor: theme.surfaceContainer,
+    unselected: {
+      disabled: {
+        container: {
+          backgroundColor: theme.surfaceDisabled,
+          borderColor: theme.surfaceDisabled,
+        },
+        icon: {
+          color: theme.onSurfaceContrast,
+        },
+        font: {
+          color: theme.onSurfaceContrast,
+        },
       },
-      icon: {
-        color: theme.primary,
+      enabled: {
+        container: {
+          backgroundColor: theme.surfaceContainer,
+          borderColor: theme.primary,
+        },
+        icon: {
+          color: theme.primary,
+        },
+        font: {
+          color: theme.primary,
+        },
       },
     },
   };
 
-  return colors[disabled];
+  return colors[selected][disabled];
 };
 
 const getDynamicStyles = ({
   theme,
   isDisabled,
   iconSize,
+  isSelected,
 }: GetDynamicStylesProps) => {
-  const { container, icon } = getColorStyles({ theme, isDisabled });
+  const { container, icon, font } = getColorStyles({
+    theme,
+    isDisabled,
+    isSelected,
+  });
 
   return StyleSheet.create({
     container: {
@@ -49,22 +96,25 @@ const getDynamicStyles = ({
       padding: iconSize * 0.3333,
     },
     icon,
+    font,
   });
 };
 
-const getSkeletonDynamicStyles = ({ iconSize }: { iconSize: IconSize }) =>
-  StyleSheet.create({
-    container: {
-      padding: iconSize * 0.8333,
-    },
-  });
-
 const styles = StyleSheet.create({
+  mainContainer: {
+    alignItems: 'center',
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: BorderRadius.INFINITE,
   },
+  border: {
+    borderWidth: 0.5,
+  },
+  title: {
+    marginTop: Spacing.X8,
+  },
 });
 
-export { styles, getDynamicStyles, getSkeletonDynamicStyles };
+export { styles, getDynamicStyles };

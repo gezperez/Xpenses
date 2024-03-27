@@ -32,6 +32,18 @@ const TypographyVariant = StyleSheet.create({
     lineHeight: 24,
     letterSpacing: -1,
   },
+  bodyExtraLargeBold: {
+    fontFamily: FontFamily.SEMI_BOLD,
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: -0.5,
+  },
+  bodyExtraLargeRegular: {
+    fontFamily: FontFamily.REGULAR,
+    fontSize: 20,
+    lineHeight: 28,
+    letterSpacing: -0.5,
+  },
   bodyLargeBold: {
     fontFamily: FontFamily.SEMI_BOLD,
     fontSize: 16,

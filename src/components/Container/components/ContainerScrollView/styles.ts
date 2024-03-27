@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
     justifyContent: 'space-between',
-    paddingHorizontal: Spacing.X16,
-    paddingBottom: Spacing.X16,
+    paddingHorizontal: Spacing.X24,
+    paddingBottom: Spacing.X24,
   },
 });
 
